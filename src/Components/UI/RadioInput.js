@@ -15,11 +15,12 @@ function RadioInput(props) {
         value={props.value}
         style={{
           marginBottom: 20,
+          
         }}
       >
-        <Radio value="left">Left</Radio>
-        <Radio value="right">Right</Radio>
-        <Radio value="alternate">Alternate</Radio>
+        <Radio style={{color: 'white'}} value="left">Left</Radio>
+        <Radio style={{color: 'white'}} value="right">Right</Radio>
+        <Radio style={{color: 'white'}} value="alternate">Alternate</Radio>
       </Radio.Group>
       </div>
   );

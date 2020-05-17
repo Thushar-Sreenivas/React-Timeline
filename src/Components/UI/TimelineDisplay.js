@@ -8,9 +8,10 @@ const useStyles = makeStyles({
     minWidth: 275,
     
   },
+  
   card: {
     margin: '30px auto',
-    // backgroundColor: 'black',
+    backgroundColor: '#181A1B',
     fontFamily: 'Roboto, sans-serif',
     textAlign: 'center',
     width: '450px',
@@ -39,7 +40,7 @@ export default function SimpleCard() {
   return (
     <Card className={classes.root}>
       <CardContent className={classes.card}>
-      <TimelineEvent events={events}/>
+      <TimelineEvent events={events} className={classes.font}/>
       </CardContent>
     </Card>
   );

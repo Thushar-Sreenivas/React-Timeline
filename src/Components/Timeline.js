@@ -37,10 +37,10 @@ const TimelineEvent = (events) => {
             <RadioInput value={mode} onChange={handleChange}/>
             {dates.map(date => (
             <div key={date} >
-                <Button type="primary" shape="round" size="large" >{date}</Button>
+                <Button style={{color: 'white'}} type="primary" shape="round" size="large" >{date}</Button>
                 <br></br>
                 {userEventActivity[date].map(event => {
-                displayUI.push(<Timeline.Item 
+                displayUI.push(<Timeline.Item style={{color: 'white'}}
                     label={event.time}
                     key={event.key}>{event.text}</Timeline.Item>)
                 })}
