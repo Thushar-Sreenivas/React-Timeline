@@ -2,12 +2,11 @@ import React from 'react'
 import { useState } from 'react';
 import { Timeline, Radio } from 'antd';
 
-function TimelimeLabelDemo({event}) {
-  const [mode, setMode] = useState('left');
+function TimelimeLabelDemo({event, mode}) {
 
-  const onChange = e => {
-    setMode(e.target.value);
-  };
+//   const onChange = e => {
+//     setMode(e.target.value);
+//   };
 
   return (
     <div>

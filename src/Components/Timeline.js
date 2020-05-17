@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import moment from 'moment'
 import SimpleCard from './UI/TimelineDisplay';
 import 'antd/dist/antd.css';
@@ -34,15 +35,20 @@ const TimelineEvent = (events) => {
 }
     
 
-const display = ({events}) => {
+// const display = ({events}) => {
+    export default function Display({events}) {
+    const [mode, setMode] = useState('left');
+    function handleChange(newMode) {
+        setMode(newMode);
+      }
+    
     let displayUI = []
-    let evens
     const userEventActivity = TimelineEvent(events)
     let userEvent = []
     const dates = Object.keys(userEventActivity)
     return (
         <div>
-            <RadioInput />
+            <RadioInput value={mode} onChange={handleChange}/>
             {dates.map(date => (
             <div key={date} >
                 <Button type="primary" shape="round" size="large" style={{textAlign: "center"}}>{date}</Button>
@@ -52,7 +58,7 @@ const display = ({events}) => {
                     key={event.key}>{event.text}</Timeline.Item>)
                 {console.log("Inside Push", displayUI)}
                 })}
-                <TimelimeLabelDemo event={displayUI} key={date}/>
+                <TimelimeLabelDemo event={displayUI} key={date} mode={mode}/>
                 {console.log(displayUI = [])}
             </div>
             ))}
@@ -61,4 +67,3 @@ const display = ({events}) => {
     
 }
 
-export default display

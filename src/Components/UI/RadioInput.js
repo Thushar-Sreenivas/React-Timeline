@@ -2,18 +2,18 @@ import React from 'react'
 import { useState } from 'react';
 import { Timeline, Radio } from 'antd';
 
-function RadioInput() {
-  const [mode, setMode] = useState('left');
+function RadioInput(props) {
+//   const [mode, setMode] = useState('left');
 
   const onChange = e => {
-    setMode(e.target.value);
+    props.onChange(e.target.value);
   };
 
   return (
     <div>
       <Radio.Group
         onChange={onChange}
-        value={mode}
+        value={props.value}
         style={{
           marginBottom: 20,
         }}
