@@ -6,9 +6,11 @@ import TimelineEvent from '../Timeline'
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    
   },
   card: {
     margin: '30px auto',
+    // backgroundColor: 'black',
     fontFamily: 'Roboto, sans-serif',
     textAlign: 'center',
     width: '450px',

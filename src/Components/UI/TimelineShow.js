@@ -4,7 +4,7 @@ import { Timeline } from 'antd';
 function TimelineShow({event, mode}) {
 
   return (
-    <div>
+    <div style={{marginTop: '20px'}}>
       <Timeline mode={mode}>
           {event}
       </Timeline>

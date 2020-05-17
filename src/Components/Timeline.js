@@ -33,11 +33,11 @@ const TimelineEvent = (events) => {
     const userEventActivity = TimelineEvent(events)
     const dates = Object.keys(userEventActivity)
     return (
-        <div>
+        <div className={classes.card}>
             <RadioInput value={mode} onChange={handleChange}/>
             {dates.map(date => (
             <div key={date} >
-                <Button className={classes.body} type="primary" shape="round" size="large" >{date}</Button>
+                <Button type="primary" shape="round" size="large" >{date}</Button>
                 <br></br>
                 {userEventActivity[date].map(event => {
                 displayUI.push(<Timeline.Item 

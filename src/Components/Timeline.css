@@ -1,4 +1,5 @@
-.font: {
+.card: {
     font-family: 'Roboto', sans-serif;
     font-size: 48px;
+    background-color: black !important;
 }
