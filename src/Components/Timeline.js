@@ -1,5 +1,11 @@
 import React from 'react'
 import moment from 'moment'
+import SimpleCard from './UI/TimelineDisplay';
+import 'antd/dist/antd.css';
+import TimelimeLabelDemo from '../Components/UI/TimelineAntisplay'
+import { Timeline, Button, Radio } from 'antd';
+import {Remove} from 'react-lodash'
+import RadioInput from './UI/RadioInput';
 
 const testEvents = [
     { ts: "2017-09-17T12:22:46.587Z", text: "Logged in" },
@@ -11,53 +17,44 @@ const testEvents = [
     { ts: "2017-09-16T12:20:46.587Z", text: "Clicked Checkout" }
   ];
 
-const Timeline = (events) => {
+const TimelineEvent = (events) => {
     let userEventDetails = {};
     let userEventArray = []
-    // console.log("Timeline -> userEventDetails", userEventDetails);
-    // console.log("Timeline -> userEventArray", userEventArray);
         events.map((event, index) => {
             let date = moment(event.ts).format("DD MMM YYYY");
             userEventArray = userEventDetails[date] || [];
-            // userEventArray = userEventDetails[date]?null:[]
-            // console.log("Before -> userEventDetails", userEventDetails)
             userEventArray.push({
                 time: moment(event.ts).format('HH mm'),
-                // time: date,
                 text: event.text,
                 key: index                
             })
             userEventDetails[date] = userEventArray
-            // console.log("After -> userEventArray", userEventArray)
-            // console.log("After -> userEventDetails", userEventDetails)
         })
-        // console.log("Final -> userEventArray", userEventArray)
-
     return userEventDetails
 }
     
 
-
 const display = ({events}) => {
-    const userEventActivity = Timeline(events)
-    // console.log("Last Function -> userEventActivity", userEventActivity)
+    let displayUI = []
+    let evens
+    const userEventActivity = TimelineEvent(events)
     let userEvent = []
     const dates = Object.keys(userEventActivity)
-    // console.log("display -> Object.keys(userEventActivity)", Object.entries(userEventActivity))
-    // console.log(dates);
     return (
         <div>
+            <RadioInput />
             {dates.map(date => (
-            <ul key={date}>
-                <li>{date}</li>
-                {/* {userEventActivity.date[0]} */}
-                {console.log("display", userEventActivity[date])}
-                {userEventActivity[date].map(event => (
-                    // console.log("Events ", event);
-                    <p>{event.text}</p>
-                ))}
-            </ul>
-            
+            <div key={date} >
+                <Button type="primary" shape="round" size="large" style={{textAlign: "center"}}>{date}</Button>
+                {userEventActivity[date].map(event => {
+                displayUI.push(<Timeline.Item 
+                    label={event.time}
+                    key={event.key}>{event.text}</Timeline.Item>)
+                {console.log("Inside Push", displayUI)}
+                })}
+                <TimelimeLabelDemo event={displayUI} key={date}/>
+                {console.log(displayUI = [])}
+            </div>
             ))}
         </div>
     )

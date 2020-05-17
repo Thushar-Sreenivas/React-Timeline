@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 import moment from 'moment'
-import Timeline from './Components/Timeline';
+import TimelineEvent from './Components/Timeline';
 
 const events = [
   { ts: "2017-09-17T12:22:46.587Z", text: "Logged in" },
@@ -17,7 +17,7 @@ const events = [
 function App() {
   return (
     <div>
-      <Timeline events={events}/>
+      <TimelineEvent events={events}/>
     </div>
   );
 }
