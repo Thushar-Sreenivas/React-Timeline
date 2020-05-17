@@ -14,22 +14,24 @@ const testEvents = [
 const Timeline = (events) => {
     let userEventDetails = {};
     let userEventArray = []
-    console.log("Timeline -> userEventDetails", userEventDetails);
-    console.log("Timeline -> userEventArray", userEventArray);
+    // console.log("Timeline -> userEventDetails", userEventDetails);
+    // console.log("Timeline -> userEventArray", userEventArray);
         events.map((event, index) => {
             let date = moment(event.ts).format("DD MMM YYYY");
             userEventArray = userEventDetails[date] || [];
-            console.log("Before -> userEventDetails", userEventDetails)
+            // userEventArray = userEventDetails[date]?null:[]
+            // console.log("Before -> userEventDetails", userEventDetails)
             userEventArray.push({
-                time: date,
+                time: moment(event.ts).format('HH mm'),
+                // time: date,
                 text: event.text,
                 key: index                
             })
             userEventDetails[date] = userEventArray
-            console.log("After -> userEventArray", userEventArray)
-            console.log("After -> userEventDetails", userEventDetails)
+            // console.log("After -> userEventArray", userEventArray)
+            // console.log("After -> userEventDetails", userEventDetails)
         })
-        console.log("Final -> userEventArray", userEventArray)
+        // console.log("Final -> userEventArray", userEventArray)
 
     return userEventDetails
 }
@@ -38,12 +40,28 @@ const Timeline = (events) => {
 
 const display = ({events}) => {
     const userEventActivity = Timeline(events)
-    console.log("Last Function -> userEventActivity", userEventActivity)
+    // console.log("Last Function -> userEventActivity", userEventActivity)
+    let userEvent = []
+    const dates = Object.keys(userEventActivity)
+    // console.log("display -> Object.keys(userEventActivity)", Object.entries(userEventActivity))
+    // console.log(dates);
     return (
         <div>
-            <h1>{events[0].ts}</h1>
+            {dates.map(date => (
+            <ul key={date}>
+                <li>{date}</li>
+                {/* {userEventActivity.date[0]} */}
+                {console.log("display", userEventActivity[date])}
+                {userEventActivity[date].map(event => (
+                    // console.log("Events ", event);
+                    <p>{event.text}</p>
+                ))}
+            </ul>
+            
+            ))}
         </div>
     )
+    
 }
 
 export default display
