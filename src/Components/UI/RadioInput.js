@@ -1,6 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
-import { Timeline, Radio } from 'antd';
+import { Radio } from 'antd';
 
 function RadioInput(props) {
 //   const [mode, setMode] = useState('left');
